@@ -1,8 +1,43 @@
 # Install ValorCMO into an OpenClaw workspace
 
-## Quick install
+## Fastest path
 
-Copy the repo contents into your workspace root so these paths resolve:
+From inside the ValorCMO repo:
+
+```bash
+./scripts/install-openclaw-workspace.sh /path/to/openclaw/workspace
+```
+
+If you run it while already inside the target workspace, you can just do:
+
+```bash
+/path/to/ValorCMO/scripts/install-openclaw-workspace.sh .
+```
+
+## What the installer does
+
+The installer copies these repo paths into the target workspace:
+
+- `skills/*`
+- `tools/REGISTRY.md`
+- `tools/integrations/*.md`
+- `.agents/product-marketing-context.example.md`
+
+It also creates `.agents/product-marketing-context.md` only if one does not already exist.
+
+That means your workspace-specific context is preserved by default.
+
+## Optional overwrite behavior
+
+If you want to overwrite an existing `.agents/product-marketing-context.md` with the starter template:
+
+```bash
+VALORCMO_FORCE_CONTEXT=1 ./scripts/install-openclaw-workspace.sh /path/to/openclaw/workspace
+```
+
+## Manual install
+
+If you do not want to use the script, copy these paths into your workspace root:
 
 - `skills/*`
 - `tools/REGISTRY.md`
@@ -18,10 +53,10 @@ If you do not already have one, start from:
 
 ## Recommended workflow
 
-1. Copy the files into the workspace
-2. Keep your local `.agents/product-marketing-context.md` workspace-specific
+1. Run the installer
+2. Edit `.agents/product-marketing-context.md` with your actual product context
 3. Treat `tools/integrations/*.md` as compatibility notes, not proof of live auth
-4. Update skills locally if your workspace has company-specific preferences
+4. Keep business-specific context local to the workspace
 
 ## What not to overwrite
 
@@ -36,6 +71,6 @@ In particular, keep these workspace-specific when they already exist:
 ## Upgrade guidance
 
 When pulling a newer ValorCMO version:
-- prefer merging `skills/` and `tools/`
+- rerun `./scripts/install-openclaw-workspace.sh /path/to/openclaw/workspace`
 - preserve your local `.agents/product-marketing-context.md`
 - review release notes for reference-path or wording changes

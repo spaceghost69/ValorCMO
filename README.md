@@ -45,22 +45,19 @@ The original imported marketing skill pack was useful, but it was not fully nati
 - `tools/REGISTRY.md` , local compatibility registry for imported skill references
 - `tools/integrations/*.md` , lightweight integration notes used by skills
 - `.agents/product-marketing-context.example.md` , starter template for shared product context
+- `scripts/install-openclaw-workspace.sh` , installer for OpenClaw workspaces
 - `INSTALL.md` , install instructions for OpenClaw workspaces
 - `UPSTREAM.md` , source lineage and fork strategy notes
 
 ## Quick start
 
-1. Copy these paths into your OpenClaw workspace root:
-   - `skills/*`
-   - `tools/REGISTRY.md`
-   - `tools/integrations/*.md`
-2. Create your shared context file at:
+1. Run the installer:
+   - `./scripts/install-openclaw-workspace.sh /path/to/openclaw/workspace`
+2. Edit your shared context file at:
    - `.agents/product-marketing-context.md`
-3. If needed, start from:
-   - `.agents/product-marketing-context.example.md`
-4. Keep your company-specific context local and do not overwrite it during upgrades.
+3. Keep your company-specific context local and do not overwrite it during upgrades.
 
-See `INSTALL.md` for the full install flow.
+See `INSTALL.md` for the full install flow and overwrite options.
 
 ## Design principles
 
@@ -99,7 +96,6 @@ Release focus:
 
 ## Roadmap
 
-- add an install script for OpenClaw workspaces
 - add validation checks for broken internal references
 - add a smaller “core pack” install profile
 - add more explicit examples for B2B SaaS, agencies, and creator products
